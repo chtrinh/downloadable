@@ -9,22 +9,22 @@ Using the paperclip plugin, this should be already installed from spree installa
 
 1. script/extension install git://github.com/chtrinh/downloadable.git
 
-## NOTES - TODO
+## NOTES
+	- ignores shipping/shipment attributes in Order
+	- CAUTION: overrides a lot of views
+	- Changes to checkout.js in particular AJAX POST include in billing stage.  
 
-NOTES - ignores shipping/shipment attributes in Order
-      - CAUTION: overrides a lot of views
-      - Changes to checkout.js in particular AJAX POST include in billing stage.  
-
-TODO - Authentication / Secret URLs, prevent unauthorize access to download links
-	 - Enable Sendfile-x send_file() instead of a regular link
-	 - Add decremental downloads (ie. MAX 3 downloads per user), currently unlimited
-	 - Create an Admin configuration page to support global downloadable options
-	 - Integrate spree-s3-download, probably create a fork
-	 - Integrate or fork to another extension for email templates, include URL link to customer in their invoiced email
-	 - Create Bulk downloads/upload feature
-	 - Enable zipping of multiple downloadable products
-	 - Stress test! 
-     - Refactor/DRY up code to be a better fit for future spree releases.
+## TODO
+	- Authentication / Secret URLs, prevent unauthorize access to download links
+	- Enable Sendfile-x send_file() instead of a regular link
+	- Add decremental downloads (ie. MAX 3 downloads per user), currently unlimited
+	- Create an Admin configuration page to support global downloadable options
+	- Integrate spree-s3-download, probably create a fork
+	- Integrate or fork to another extension for email templates, include URL link to customer in their invoiced email
+	- Create Bulk downloads/upload feature
+	- Enable zipping of multiple downloadable products
+	- Stress test! 
+	- Refactor/DRY up code to be a better fit for future spree releases.
 
 ## Warning 
 
