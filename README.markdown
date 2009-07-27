@@ -1,7 +1,7 @@
 # Downloadable
 
 ## SUMMARY
-Allows for downloadable products that are served from you own server. 
+A Spree extension: allows for downloadable products that are served from your own server. 
 Options include zipping multiple files for downloads, download limits, and emails links. 
 Using the paperclip plugin, this should be already installed from spree installation. 
 
