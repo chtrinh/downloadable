@@ -7,6 +7,8 @@ Using the paperclip plugin, this should be already installed from spree installa
 
 ## QUICK START
 1. script/extension install git://github.com/chtrinh/downloadable.git
+2. rake gems:install
+3. rake db:migrate
 
 ## THANKS
 Thank you to the all those in the Spree community! 

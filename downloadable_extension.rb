@@ -8,9 +8,9 @@ class DownloadableExtension < Spree::Extension
 
   # Please use downloadable/config/routes.rb instead for extension routes.
 
-  # def self.require_gems(config)
-  #   config.gem 'rubyzip', :version => '0.9.1' 
-  # end
+  def self.require_gems(config)
+    config.gem 'rubyzip', :lib => 'zip/zip', :version => '0.9.1'
+  end
   
   def activate
     # Need a global peference for download limits
