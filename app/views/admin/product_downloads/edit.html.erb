@@ -2,7 +2,6 @@
 
 <%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Downloadable Links"} %>
 
-<<<<<<< HEAD:app/views/admin/product_downloads/edit.html.erb
 
 <% form_for (@product_download, :url => object_url, :html => { :multipart => true }) do |f| %>
   	<fieldset>
@@ -29,11 +28,5 @@
 	  	<% end %>
 	
 	  	<%= render :partial => 'admin/shared/edit_resource_links' %>
-=======
-<% form_for(:product_download, :url => object_url, :html => { :method => :put, :multipart => true }) do |f| %>
-	<fieldset>
-		<%= render :partial => 'form', :locals => {:f => f} %>
-		<%= render :partial => 'admin/shared/edit_resource_links' %>
->>>>>>> 5a91be7bf3d8b207465dc8688438fea192118b88:app/views/admin/product_downloads/edit.html.erb
 	</fieldset>
 <% end %>

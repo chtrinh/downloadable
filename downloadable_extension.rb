@@ -3,18 +3,12 @@ require_dependency 'application'
 
 class DownloadableExtension < Spree::Extension
   version "1.0"
-<<<<<<< HEAD:downloadable_extension.rb
   description "Downloadable products"
   url "http://github.com/chtrinh/downloadable/tree/master"
-=======
-  description "Describe your extension here"
-  url "http://yourwebsite.com/downloadable"
->>>>>>> 5a91be7bf3d8b207465dc8688438fea192118b88:downloadable_extension.rb
 
   # Please use downloadable/config/routes.rb instead for extension routes.
 
   # def self.require_gems(config)
-<<<<<<< HEAD:downloadable_extension.rb
   #   config.gem 'rubyzip', :version => '0.9.1' 
   # end
   
@@ -90,23 +84,6 @@ class DownloadableExtension < Spree::Extension
       
       # For url_for :host 
       default_url_options[:host] = Spree::Config[:site_url]
-=======
-  #   config.gem "gemname-goes-here", :version => '1.2.3'
-  # end
-  
-  def activate
-
-    Admin::BaseController.class_eval do 
-      before_filter :add_product_admin_tabs
-       def add_product_admin_tabs
-         @product_admin_tabs << {:name => "Downloadable Links", :url => "admin_product_product_downloads_url"}
-       end
-    end
-    
-    Product.class_eval do 
-      has_many :product_downloads
-      
->>>>>>> 5a91be7bf3d8b207465dc8688438fea192118b88:downloadable_extension.rb
     end
     
   end

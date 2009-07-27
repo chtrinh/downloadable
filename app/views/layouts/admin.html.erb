@@ -7,7 +7,6 @@
 
   <%= stylesheet_link_tag 'admin/admin-reset', 'admin/grids', 'admin/admin-typography', 'admin/admin-forms', 'admin/admin-tables', 'admin/admin', :cache => 'admin-all' %>
 
-<<<<<<< HEAD:app/views/layouts/admin.html.erb
   <%= javascript_include_tag :defaults %> <!-- TODO: Remove.  See Issue #320 -->
   <%= javascript_include_tag 'jquery-1.3.2.min', 'spree', 'nested-attribute', 'zone', 'calculator', :cache => 'jquery-and-extras' %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>   
@@ -23,14 +22,6 @@
 <!--[if lte IE 7]>
 <div id='IE7'>
 <![endif]-->
-=======
-  <%= javascript_include_tag :defaults, :cache => true %>
-  <%= javascript_include_tag 'spree.js' %>
-
-  <%= yield :head %>
-</head>
-<body class='yui-skin-sam admin'>
->>>>>>> 5a91be7bf3d8b207465dc8688438fea192118b88:app/views/layouts/admin.html.erb
 <div id='wrapper'>
 
   <div id="header">
@@ -42,18 +33,13 @@
       <li><%= link_to t('store'), products_path %></li>
     </ul>
     <% end -%>      
-<<<<<<< HEAD:app/views/layouts/admin.html.erb
     <h1 class='logo'><%= link_to t("administration"), admin_path %></h1>
     <div id="progress"><%= image_tag 'progress.gif' %> <%= t('loading') %>...</div>
-=======
-    <h1 class='logo'><%= link_to 'Administration', admin_path %></h1>
->>>>>>> 5a91be7bf3d8b207465dc8688438fea192118b88:app/views/layouts/admin.html.erb
   </div>
     <div id="admin-menu">
       <ul>
         <%= tab :overview, :route => :admin %>
         <%= tab :orders, :payments, :creditcard_payments, :shipments %>
-<<<<<<< HEAD:app/views/layouts/admin.html.erb
      	<!-- Add downloadables and images to get "Products" menu tab selected-->
         <%= tab :products , :option_types, :properties, :prototypes, :variants, :product_properties, :taxons, :product_downloads, :images %>
         <%= tab :reports %>
@@ -62,12 +48,6 @@
         <% @extension_tabs.each do |etab| -%>
           <%= tab etab[0], etab[1] %>
         <% end -%>
-=======
-        <%= tab :products , :option_types, :properties, :prototypes, :variants, :product_properties, :taxons, :product_downloads %>
-        <%= tab :reports %>
-        <%= tab :configurations, :general_settings, :mail_settings, :tax_categories, :zones, :states, :gateway_configurations, :inventory_settings, :taxonomies, :label => 'configuration' %>
-        <%= tab :users %>
->>>>>>> 5a91be7bf3d8b207465dc8688438fea192118b88:app/views/layouts/admin.html.erb
       </ul>
       <br class="clear" />
     </div>
@@ -100,7 +80,6 @@
     </div>
 
     <div id="footer">
-<<<<<<< HEAD:app/views/layouts/admin.html.erb
       <p><%= t("icons_by") %> <a href='http://pinvoke.com'>pInvoke</a></p>
     </div>
 
@@ -108,13 +87,6 @@
 <!--[if IE]>
 </div>
 <![endif]-->
-=======
-      <p>Icons by <a href='http://pinvoke.com'>pInvoke</a></p>
-    </div>
-
-</div>
-
->>>>>>> 5a91be7bf3d8b207465dc8688438fea192118b88:app/views/layouts/admin.html.erb
 
 </body>
 </html>
