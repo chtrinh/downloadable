@@ -15,7 +15,7 @@ class DownloadableExtension < Spree::Extension
   def activate
     # Need a global peference for download limits
     AppConfiguration.class_eval do 
-      preference :download_limit, :integer, :default => 222
+      preference :download_limit, :integer, :default => 0 # 0 for unlimited
     end
     
     # Global/General Settings for all product downloads
