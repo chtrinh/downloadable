@@ -1,0 +1,18 @@
+<% f.field_container :name do %>
+	<%= f.label :name, t("title") %> <span class="required">*</span>
+	<%= f.text_field :title %>
+	<%= f.error_message_on :title %>
+ <% end %>
+
+<% f.field_container :name do %>
+	<%= f.label :name, t("filename") %> <span class="required">*</span>
+	<%= f.file_field :downloadable %>
+	<%= f.error_message_on :downloadable %>
+ <% end %> 
+
+<% f.field_container :name do %>
+	<%= f.label :name, t("description") %>
+	<%= f.text_field :description %>
+	<%= f.error_message_on :description %>
+<% end %>
+

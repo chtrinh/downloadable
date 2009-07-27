@@ -1,5 +1,6 @@
 <%= render :partial => 'admin/shared/product_sub_menu' %>
 
+<<<<<<< HEAD:app/views/admin/product_downloads/index.html.erb
 <%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Downloadables"} %>
 
 <div class="yui-g">
@@ -52,6 +53,31 @@
 		<td><%= link_to product.filename, product.downloadable.url %></td>
 		<td><%= product.description %></td>
 		<td><%= check_box_tag product.id, "1", product.enabled, :disabled => true %></td>
+=======
+<%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Downloadable Links"} %>
+
+<% form_for(:product_download,  :url => collection_url, :html => { :multipart => true }) do |f| %>
+	<fieldset>
+		<%= render :partial => 'form', :locals => {:f => f} %>
+		<%= render :partial => 'admin/shared/new_resource_links' %>
+	</fieldset>
+<% end %>
+	
+<table class="index">
+	<tr>
+		<th><%= t("title") %></th>
+		<th><%= t("filename") %></th>
+		<th><%= t("description") %></th>
+		<th><%= t("enabled") %></th>
+		<th><%= t("action") %></th>
+	</tr>
+  <% @product.product_downloads.each do |product| %>
+    <tr>
+		<td><%= product.title %></td>
+		<td><%= link_to product.filename, product.downloadable.url %></td>
+		<td><%= product.description %></td>
+		<td>CheckMark HERE</td>
+>>>>>>> 5a91be7bf3d8b207465dc8688438fea192118b88:app/views/admin/product_downloads/index.html.erb
 	    <td class="actions">
 	      <%= link_to_edit(product) %>
 	      &nbsp;
@@ -63,6 +89,9 @@
     <tr><td colspan="5"><%= t("none") %>.</td></tr>
   <% end %>
 </table>
+<<<<<<< HEAD:app/views/admin/product_downloads/index.html.erb
 
 <%= link_to t('create_zip'), admin_product_create_bundle_path(@product) %> | Zip File:  
 <%= link_to(@product.bundle_filename, "/#{@product.bundlefile}") if(@product && @product.bundle_filename) %><br/>
+=======
+>>>>>>> 5a91be7bf3d8b207465dc8688438fea192118b88:app/views/admin/product_downloads/index.html.erb
