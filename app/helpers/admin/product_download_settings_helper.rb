@@ -1,0 +1,2 @@
+module Admin::ProductDownloadSettingsHelper
+end

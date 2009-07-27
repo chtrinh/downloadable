@@ -1,0 +1,32 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%= t('downloadable_preferences') %></h1>
+
+<% form_tag(admin_product_download_settings_path, :method => :put) do -%>
+
+<div class="yui-g">
+
+  <div class="yui-u first">
+
+    <fieldset>
+      <legend><%= t('general') %></legend>
+
+      <p>
+        <label>
+          <%= check_box_tag('dummy[download_limit]', "1", Spree::Config[:download_limit] == 0, :disabled => true) %>
+          <%= t('unlimited') %>
+        </label>
+      </p>
+
+      <p>
+		<label> <%= t('limit') %> <sup>Enter 0 for unlimited </sup></label><br/>
+          <%= text_field_tag('preferences[download_limit]', Spree::Config[:download_limit], :maxlength => 10)%><br/>
+		This is a global setting for "NEW" orders. Edit certain products downloadable attribute to be more specific.
+      </p>
+    </fieldset>
+  </div>
+</div>
+
+<p class="form-buttons"><%= button t('save_preferences') %></p>
+
+<% end -%>

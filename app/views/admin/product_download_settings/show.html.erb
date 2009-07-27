@@ -1,0 +1,15 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%= t("downloadable_settings") %></h1>
+
+<table>
+  <tr>
+    <th scope="row"><%= t("download_limit") %>:</th> 
+    <td><%=  if Spree::Config[:download_limit] == 0
+	 			"Unlimited"
+			 else 
+				Spree::Config[:download_limit]
+			 end %></td>
+  </tr>
+</table>
+<p><%= link_to_with_icon 'edit', t("edit"), edit_admin_product_download_settings_path %></p>

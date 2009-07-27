@@ -1,0 +1,68 @@
+<%= render :partial => 'admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Downloadables"} %>
+
+<div class="yui-g">
+
+  <div class="yui-u first">
+	<% form_for :product_download, :html => { :multipart => true } do |f| %>
+	  	<fieldset>
+			<legend>New downloadable file</legend>
+			<% f.field_container :name do %>
+				<%= f.label :name, t("filename") %> <span class="required">*</span> <br/>
+				<%= f.file_field :downloadable %>
+		    <% end %> 
+		
+			<% f.field_container :title do %>
+				<%= f.label t("title") %><span> <sup>Defaults to filename</sup></span><br/>
+				<%= f.text_field :title %>
+		  	<% end %>
+	
+			<% f.field_container :description do %>
+				<%= f.label t("description") %><br/>
+				<%= f.text_field :description %>
+		  	<% end %>
+		  	<%= render :partial => 'admin/shared/new_resource_links' %>
+		</fieldset>
+	<% end %>
+  </div>
+  <div class="yui-u">
+	<% form_for @product, :url => {:action => "update_product_download_limit", :id => @product},  :html => { :multipart => true } do |f| %>
+	  	<fieldset>
+			<legend>Product download limit</legend>
+			<% f.field_container :name do %>
+				<%= f.label :name, t("download_limit") %> <sup>Defaults to global settings, leave blank for default</sup><br/>
+				<%= f.text_field :download_limit, :size => 7 %>
+		    <% end %> 
+		  	<%= render :partial => 'admin/shared/edit_resource_links' %>
+		</fieldset>
+	<% end %>
+  </div>
+</div>
+	
+<table class="index">
+	<tr>
+		<th><%= t("filename") %></th>
+		<th><%= t("description") %></th>
+		<th width="40px"><%= t("enabled") %></th>
+		<th width="120px"><%= t("action") %></th>
+	</tr>
+  <% @product.product_downloads.each do |product| %>
+    <tr id="<%= dom_id(product) %>">
+		<td><%= link_to product.filename, product.downloadable.url %></td>
+		<td><%= product.description %></td>
+		<td><%= check_box_tag product.id, "1", product.enabled, :disabled => true %></td>
+	    <td class="actions">
+	      <%= link_to_edit(product) %>
+	      &nbsp;
+	      <%= link_to_delete(product) %>
+	    </td>     
+    </tr>
+  <% end %>
+  <% if @product.product_downloads.empty? %>
+    <tr><td colspan="5"><%= t("none") %>.</td></tr>
+  <% end %>
+</table>
+
+<%= link_to t('create_zip'), admin_product_create_bundle_path(@product) %> | Zip File:  
+<%= link_to(@product.bundle_filename, "/#{@product.bundlefile}") if(@product && @product.bundle_filename) %><br/>
