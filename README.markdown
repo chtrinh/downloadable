@@ -5,6 +5,11 @@ A Spree extension: allows for downloadable products that are served from your ow
 Options include zipping multiple files for downloads, download limits, and emails links. 
 Using the paperclip plugin, this should be already installed from spree installation. 
 
+## WARNING
+       - Either wait for the next release of the spree gem or consider using the source. 
+         Currently downloadable requires new extension changes made in the spree source.
+         Thanks dreamcat4
+
 ## QUICK START
 1. script/extension install git://github.com/chtrinh/downloadable.git
 2. rake gems:install
@@ -15,7 +20,6 @@ Thank you to the all those in the Spree community!
 Suggestions and comments welcomed, chris.chtrinh@gmail.com
 
 ## NOTES
-	- Lastest Spree version 0.8.x(at time of release)
 	- Requires 'rubyzip' gem - sudo gem install rubyzip
 	- Enable X-Sendfile to be of praticial use, see comments in product_download_controller.
 	- Ignores shipping/shipment attributes when there are ONLY downloadable products
