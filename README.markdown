@@ -3,12 +3,9 @@
 ## SUMMARY
 A Spree extension: allows for downloadable products that are served from your own server. 
 Options include zipping multiple files for downloads, download limits, and emails links. 
-Using the paperclip plugin, this should be already installed from spree installation. 
-
-## WARNING
-       - Either wait for the next release of the spree gem or consider using the source. 
-         Currently downloadable requires new extension changes made in the spree source.
-         Thanks dreamcat4
+Using the paperclip plugin, this should be already installed from spree installation.
+Currently working for spree gem 0.8.5. If you are working on source, take a look at the 
+"master" branch.
 
 ## QUICK START
 1. script/extension install git://github.com/chtrinh/downloadable.git
@@ -16,7 +13,8 @@ Using the paperclip plugin, this should be already installed from spree installa
 3. rake db:migrate
 
 ## THANKS
-Thank you to the all those in the Spree community! 
+Thank you to the all those in the Spree community!
+Special thanks to dreamcat4 for point out some bugs and issues
 Suggestions and comments welcomed, chris.chtrinh@gmail.com
 
 ## NOTES

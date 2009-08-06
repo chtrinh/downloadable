@@ -11,7 +11,7 @@
 	<% unless item.product.product_downloads.empty? %>
 		<br />
 		<% item.product.product_downloads.each do |download_item| %>
-			(<%= link_to download_item.filename, download_item.downloadable.url %>)
+			<%= link_to "(#{download_item.filename})", download_item.downloadable.url if download_item.enabled %>
 		<% end %>
 	<% end %>
 	</td>

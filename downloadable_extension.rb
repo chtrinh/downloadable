@@ -48,25 +48,17 @@ class DownloadableExtension < Spree::Extension
        end
     end
     
-    # Moved! Need Require zip library/gem
-    # Include method to determine if product is downloadable. 
-    # Product.class_eval do 
-    #   has_many :product_downloads
-    #   
-    #   def downloadable
-    #     !product_downloads.empty?
-    #   end
-    # end
-    
-    ApplicationHelper.class_eval do
+    ApplicationController.class_eval do 
       # Checks if checkout cart has ONLY downloadable items
-      # Used for shipping in helpers/checkouts_helper.rb
+
       def only_downloadable
         @order.line_items.each do |item|
           return false unless item.product.downloadable
         end
       end
-      
+    end
+    
+    ApplicationHelper.class_eval do
       def render_links(item)
         if item.product.bundlefile
           return content_tag(:sub,link_to("#{item.product.bundle_filename}", url_for(:controller => "product_downloads",
@@ -84,6 +76,16 @@ class DownloadableExtension < Spree::Extension
       
       # For url_for :host 
       default_url_options[:host] = Spree::Config[:site_url]
+    end
+    
+    Spree::Checkout.class_eval do 
+      def load_checkout_steps
+        @checkout_steps = %w{registration billing shipping shipping_method payment confirmation}
+        @checkout_steps.delete "registration" if current_user
+
+        @checkout_steps.delete "shipping" if only_downloadable
+        @checkout_steps.delete "shipping_method" if only_downloadable
+      end
     end
     
   end
