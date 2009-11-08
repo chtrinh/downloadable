@@ -1,2 +1,0 @@
-module Admin::ProductDownloadHelper
-end
