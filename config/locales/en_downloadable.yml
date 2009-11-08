@@ -9,3 +9,6 @@ en-US:
   you_have_reached_your_download_limit: "You have reached your download limit"
   unauthorized_access: "Unauthorized Access"
   create_zip: "Create Zip"
+  variant: "Variant"
+  filename(s): "Filename(s)"
+  

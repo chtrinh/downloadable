@@ -1,0 +1,135 @@
+<%= render :partial => 'admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Downloadables"} %>
+
+<div class="yui-g">
+
+  <div class="yui-u first">
+	<% form_for(:downloadable, :url => { :controller => 'downloadables', :action => 'create' }, :html => { :multipart => true }) do |f| %>
+	  	<fieldset>
+			<legend>New downloadable file</legend>
+			<% f.field_container :name do %>
+				<%= f.label :name, t("filename") %> <span class="required">*</span> <br/>
+				<%= f.file_field :attachment %>
+		  <% end %> 
+		
+			<% f.field_container :title do %>
+				<%= f.label t("title") %><span> <sup>Defaults to filename</sup></span><br/>
+				<%= f.text_field :title %>
+		  <% end %>
+	
+			<% f.field_container :description do %>
+				<%= f.label t("description") %><br/>
+				<%= f.text_field :description %>
+		  <% end %>
+		  
+		  <% f.field_container :viewable_id do %>
+  		  <% if @product.has_variants? %>
+          <%= f.label Variant.human_name + ": " %>
+          <%= f.select :viewable_id, @variants %>
+        <% else %>
+          <%= hidden_field_tag :product_id, @product.id %>
+        <% end %>
+      <% end %>
+      
+      <% f.field_container :download_limit do %>
+				<%= f.label :name, t("download_limit") %> <sup>Defaults to global settings if left blank.</sup><br/>
+				<%= f.text_field :download_limit, :size => 7 %>
+		  <% end %>
+      
+      <p class="form-buttons">
+        <%= button t("update") %>
+        or <%= link_to t("cancel"), "#", :id => "cancel_link" %>
+      </p>
+		</fieldset>
+	<% end %>
+  </div>
+</div>
+
+<% content_for :head  do %>
+  <script type="text/javascript">
+    var downloadLimit = {<%= @download_limits.collect {|limit| "#{limit}"}.join(",") %>};
+     jQuery(document).ready(function(){  
+      jQuery("#downloadable_viewable_id").change( function() {
+        jQuery("#downloadable_download_limit").val(downloadLimit[jQuery(this).val()]);
+        console.log(jQuery(this).val());
+      });
+    });
+
+  </script>
+<% end %>
+	
+<table class="index">
+	<tr>
+	  <% if @product.has_variants? %>
+	    <th><%= Variant.human_name %></th>
+	  <% end %>
+		<th><%= t("filename(s)") %></th>
+		<th><%= t("description") %></th>
+		<th width="40px"><%= t("enabled") %></th>
+		<th width="120px"><%= t("action") %></th>
+	</tr>
+  <% @product.downloadables.each do |downloadable| %>
+    <tr>
+      <% if @product.has_variants? %>
+        <td><%= t('all') %></td>
+      <% end %>
+      <td><%= link_to(downloadable.filename, downloadable.attachment.url(:product)) %></td>
+      <td><%= h(downloadable.description) %></td>
+      <td><%= check_box_tag 'downloadable', 'enabled', downloadable.enabled, :disabled => true %></td>
+      <td class="actions" style="padding:0px;">
+        <%= link_to_with_icon('edit', t("edit"), edit_admin_product_downloadable_url(@product, downloadable)) %>
+        &nbsp;
+        <%= link_to_delete downloadable, {:url => admin_product_downloadable_url(@product, downloadable) }%>
+      </td>
+    </tr>
+  <% end %>
+
+	<% @product.variants.each do |variant| %>
+	  <tr>
+	    <% if @product.has_variants? %>
+        <td><%= variant.options_text %></td>
+      <% end %>
+	    <td>
+	      <table>
+	      <% variant.downloadables.each do |downloadable| %>
+	        <tr><td><%= link_to(downloadable.filename, downloadable.attachment.url(:product)) %></td></tr>
+	      <% end %>
+	      </table>
+	    </td>
+	    <td>
+	      <table>
+	      <% variant.downloadables.each do |downloadable| %>
+	        <tr><td><%= (downloadable.description == "") ? "&nbsp;" :  downloadable.description %></td></tr>
+	      <% end %>
+	      </table>
+	    </td>
+	    <td>
+	      <table>
+	      <% variant.downloadables.each do |downloadable| %>
+	        <% if downloadable.zipfile? %>
+            <tr><td>&nbsp;</td></tr>
+          <% else %>
+	          <tr><td>
+	            <%= check_box_tag 'downloadable', 'enabled', downloadable.enabled, :disabled => true %>
+	          </td></tr>
+	        <% end %>
+	      <% end %>
+	      </table>
+	    </td>
+      <td class="actions" style="padding:0px;">
+        <table>
+	      <% variant.downloadables.each do |downloadable| %>
+	        <% if downloadable.zipfile? %>
+	          <tr><td>&nbsp;</td></tr>
+	        <% else %>
+  	        <tr><td><%= link_to_with_icon('edit', t("edit"), edit_admin_product_downloadable_url(@product, downloadable)) %>
+            &nbsp;
+            <%= link_to_delete downloadable, {:url => admin_product_downloadable_url(@product, downloadable) }%></td></tr>
+          <% end %>
+	      <% end %>
+	      </table>
+      </td>
+	  </tr>
+  <% end %>
+</table>

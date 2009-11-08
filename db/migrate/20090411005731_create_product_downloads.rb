@@ -2,14 +2,13 @@ class CreateProductDownloads < ActiveRecord::Migration
   def self.up
     create_table :product_downloads do |t|
       t.string :title
-      t.integer :product_id
+      t.integer :download_limit
       t.string :description
-      t.string :downloadable_file_name
-      t.string :downloadable_content_type
-      t.integer :downloadable_file_size
+      t.string :attachment_file_name
+      t.string :attachment_content_type
+      t.integer :attachment_file_size
       t.timestamps
     end
-    add_index :product_downloads, :product_id
   end
 
   def self.down
