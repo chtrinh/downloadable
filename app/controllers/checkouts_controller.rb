@@ -7,6 +7,7 @@ class CheckoutsController < Spree::BaseController
   resource_controller :singleton
   belongs_to :order             
  
+  layout 'application' # this might changed, needed to process the checkout sequence. 
   ssl_required :update, :edit
 
   # alias original r_c method so we can handle any (gateway) exceptions that might be thrown
