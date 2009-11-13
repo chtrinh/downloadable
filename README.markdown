@@ -33,6 +33,7 @@ Does not smoothly updates from older versions of this extension.
 ## THANKS
 Thank you to the all those in the Spree community! 
 Suggestions and comments welcomed, chris.chtrinh@gmail.com
+	  mishawagon - Bug in admin/downloadable_settings.rb
 	  mishawagon - Possible conflicts with 'application_controller.rb'
 	  pkordel/mishawagon- For nil.downloadable? bug. 
 	  dreamcat4 - Found bugs in order models.

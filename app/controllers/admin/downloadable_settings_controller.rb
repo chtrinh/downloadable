@@ -4,7 +4,7 @@ class Admin::DownloadableSettingsController < Admin::BaseController
 
     respond_to do |format|
       format.html {
-        redirect_to admin_product_download_settings_path
+        redirect_to admin_downloadable_settings_path
       }
     end
   end
