@@ -1,4 +1,4 @@
-require_dependency 'application'
+require_dependency 'application_controller'
 
 class DownloadableExtension < Spree::Extension
   version "1.0"
