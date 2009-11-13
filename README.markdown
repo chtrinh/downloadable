@@ -33,8 +33,9 @@ Does not smoothly updates from older versions of this extension.
 ## THANKS
 Thank you to the all those in the Spree community! 
 Suggestions and comments welcomed, chris.chtrinh@gmail.com
-  - dreamcat4 - Found bugs in order models.
-  - welemski - Variant support suggestion.
+	  pkordel/mishawagon- For nil.downloadable? bug. 
+	  dreamcat4 - Found bugs in order models.
+	  welemski - Variant support suggestion.
 	
 ## REFERENCES
 	- http://blog.lighttpd.net/articles/2006/07/02/x-sendfile

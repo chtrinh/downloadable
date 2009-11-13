@@ -55,13 +55,13 @@ class DownloadableExtension < Spree::Extension
       def add_download_limit
         use_global = false
         
-        if !self.variant.downloadables.empty?
+        if !self.variant.nil? and !self.variant.downloadables.empty?
           if self.variant.downloadables.first.download_limit.nil?
             use_global = true
           else
             self.download_limit = self.variant.downloadables.first.download_limit
           end
-        elsif !self.product.downloadables.empty?
+        elsif !self.product.nil? and !self.product.downloadables.empty?
           if self.product.downloadables.first.download_limit.nil?
             use_global = true
           else
